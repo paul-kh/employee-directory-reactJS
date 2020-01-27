@@ -1,0 +1,12 @@
+.bold-text {
+    font-weight: bold;
+}
+.bg-lightgreen {
+    background-color: rgb(67, 173, 67);
+}
+.bg-lightgray {
+    background-color: lightgray;
+}
+.row-border-bottom{
+    border-bottom: 0.5px solid grey;
+}
