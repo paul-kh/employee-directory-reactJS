@@ -3,7 +3,7 @@
 
 This app creates a employee directory with React. React framework allows breaking up the application's UI into components, managing component state, and responding to user events.
 
-* Live site: https://paul-kh.github.io/employee-directory-reatJS/
+* Live site: https://paul-kh.github.io/employee-directory-reactJS/
 
 ## User Story
 
