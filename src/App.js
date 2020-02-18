@@ -26,7 +26,6 @@ export default function App() {
       <FilterTable filterChange={handleFilterChange} />
       <TableHeader />
       {empData.map(emp => <TableRow id={emp.id} key={emp.id} name={emp.name} role={emp.role} department={emp.department} email={emp.email} />)}
-      {/* {conditionalRender()} */}
     </div>
   );
 
@@ -38,15 +37,12 @@ export default function App() {
     else {
       setEmpData(newData);
     }
-    // setEmpData();
-    // console.log(empData);
   }
 
   // Sort by value that user select in the seletion box
   // Parent component handles "onChange" event raised by child component "SortTable"
   // This is how the parent receives props value from child
   // It receives value of the select box and update this value in the state
-
   function handleSortChange(sortBy) {
     setSortBy(sortBy);
     // Sorting Solution found on Stack Overflow
@@ -66,8 +62,6 @@ export default function App() {
   }
 
   // Parent component handles "onChange" event raised by child component "FilterTable"
-  // This is how the parent receives props value from child
-  // It detects the checkbox status then update the value in the state variable "isFiltered"
   function handleFilterChange(checked) {
     if (checked) {
       setEmpData(empData.filter(e => e.role.toLocaleLowerCase().search("manager") >= 0));
