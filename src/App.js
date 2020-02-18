@@ -80,22 +80,6 @@ export default function App() {
     } else (setEmpData(employees));
   }
 
-  // Render components dynamically based on conditions of sorting and filtering
-  function conditionalRender() {
-    if (sortBy === "ID") {
-      if (isFiltered) return filter()
-      else return sort("ID");
-    }
-    if (sortBy === "Name") {
-      if (isFiltered) return filter()
-      else return sort("Name");
-    }
-    if (sortBy === "Department") {
-      if (isFiltered) return filter()
-      else return sort("Department");
-    }
-  }
-
   // Filter by "manager". The function returns an array of JSX strings to be rendered
   function filter(checked) {
     if (checked) {
@@ -108,8 +92,5 @@ export default function App() {
     // filteredArray = ;
     // return filteredArray.map(emp => <TableRow id={emp.id} key={emp.id} name={emp.name} role={emp.role} department={emp.department} email={emp.email} />);
   }
-
-  function sort() { }
-
 }
 
