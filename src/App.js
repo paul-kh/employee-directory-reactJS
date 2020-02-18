@@ -22,7 +22,7 @@ export default function App() {
     <div >
       <h1 className="App">Employee Directory</h1>
       {/* Handle onChange events raised from the child components "SortTable" & "FilterTable" */}
-      <SortTable sortChange={sort} searchChange={handleSearchChange} />
+      <SortTable sortChange={handleSortChange} searchChange={handleSearchChange} />
       <FilterTable filterChange={handleFilterChange} />
       <TableHeader />
       {empData.map(emp => <TableRow id={emp.id} key={emp.id} name={emp.name} role={emp.role} department={emp.department} email={emp.email} />)}
@@ -42,10 +42,34 @@ export default function App() {
     // console.log(empData);
   }
 
+  // Sort by value that user select in the seletion box
   // Parent component handles "onChange" event raised by child component "SortTable"
   // This is how the parent receives props value from child
   // It receives value of the select box and update this value in the state
-  function handleSortChange(value) { setSortBy(value) }
+
+  function handleSortChange(sortBy) {
+    let sortedArray = [];
+    // Solution found on Stack Overflow
+    // https://stackoverflow.com/questions/1129216/sort-array-of-objects-by-string-property-value
+    switch (sortBy) {
+      case "Name":
+        setSortBy("Name");
+        sortedArray = employees.sort((a, b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));
+        setEmpData(sortedArray);
+        break;
+      case "ID":
+        setSortBy("ID");
+        sortedArray = employees.sort((a, b) => (a.id > b.id) ? 1 : ((b.id > a.id) ? -1 : 0));
+        setEmpData(sortedArray);
+        break;
+      case "Department":
+        setSortBy("Department");
+        sortedArray = employees.sort((a, b) => (a.department > b.department) ? 1 : ((b.department > a.department) ? -1 : 0));
+        setEmpData(sortedArray);
+        break;
+      default:
+    }
+  }
 
   // Parent component handles "onChange" event raised by child component "FilterTable"
   // This is how the parent receives props value from child
@@ -85,30 +109,7 @@ export default function App() {
     // return filteredArray.map(emp => <TableRow id={emp.id} key={emp.id} name={emp.name} role={emp.role} department={emp.department} email={emp.email} />);
   }
 
-  // Sort by value that user selet in the seletion box
-  // The function returns an array of JSX strings
-  function sort(sortBy) {
-    let sortedArray = [];
-    // Solution found on Stack Overflow
-    // https://stackoverflow.com/questions/1129216/sort-array-of-objects-by-string-property-value
-    switch (sortBy) {
-      case "Name":
-        setSortBy("Name");
-        sortedArray = employees.sort((a, b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));
-        setEmpData(sortedArray);
-        break;
-      case "ID":
-        setSortBy("ID");
-        sortedArray = employees.sort((a, b) => (a.id > b.id) ? 1 : ((b.id > a.id) ? -1 : 0));
-        setEmpData(sortedArray);
-        break;
-      case "Department":
-        setSortBy("Department");
-        sortedArray = employees.sort((a, b) => (a.department > b.department) ? 1 : ((b.department > a.department) ? -1 : 0));
-        setEmpData(sortedArray);
-        break;
-      default:
-    }
-  }
+  function sort() { }
+
 }
 
