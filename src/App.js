@@ -15,7 +15,6 @@ import { employees } from "./data";
 // ********************************
 export default function App() {
   const [sortBy, setSortBy] = useState("ID");
-  const [isFiltered, setIsFiltered] = useState(false);
   const [empData, setEmpData] = useState(employees);
 
   return (
@@ -43,11 +42,11 @@ export default function App() {
   // Parent component handles "onChange" event raised by child component "SortTable"
   // This is how the parent receives props value from child
   // It receives value of the select box and update this value in the state
-  function handleSortChange(sortBy) {
-    setSortBy(sortBy);
+  function handleSortChange(value) {
+    setSortBy(value);
     // Sorting Solution found on Stack Overflow
     // https://stackoverflow.com/questions/1129216/sort-array-of-objects-by-string-property-value
-    switch (sortBy) {
+    switch (value) {
       case "Name":
         setEmpData(employees.sort((a, b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0)));
         break;
