@@ -54,5 +54,33 @@ export const employees = [
         "department": "Supply Chain",
         "role": "warehouse manager",
         "email": "emmanuel@fakemail.com"
+    },
+    {
+        "id": 9,
+        "name": "Paula",
+        "department": "Marketing",
+        "role": "PR manager",
+        "email": "paula@fakemail.com"
+    },
+    {
+        "id": 10,
+        "name": "Andre",
+        "department": "Engineering",
+        "role": "CTO",
+        "email": "andre@fakemail.com"
+    },
+    {
+        "id": 11,
+        "name": "James",
+        "department": "Supply Chain",
+        "role": "Receiving Clerk",
+        "email": "james@fakemail.com"
+    },
+    {
+        "id": 12,
+        "name": "Stephanie",
+        "department": "Engineering",
+        "role": "Lead Software Engineer",
+        "email": "stephanie@fakemail.com"
     }
 ];
