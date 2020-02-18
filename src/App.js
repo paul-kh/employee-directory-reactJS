@@ -16,17 +16,31 @@ import { employees } from "./data";
 export default function App() {
   const [sortBy, setSortBy] = useState("ID");
   const [isFiltered, setIsFiltered] = useState(false);
+  const [empData, setEmpData] = useState(employees);
 
   return (
     <div >
       <h1 className="App">Employee Directory</h1>
       {/* Handle onChange events raised from the child components "SortTable" & "FilterTable" */}
-      <SortTable sortChange={handleSortChange} />
-      <FilterTable filterChange={handleFilterChange} />
+      <SortTable sortChange={sort} searchChange={handleSearchChange} />
+      <FilterTable filterChange={filter} />
       <TableHeader />
-      {conditionalRender()}
+      {empData.map(emp => <TableRow id={emp.id} key={emp.id} name={emp.name} role={emp.role} department={emp.department} email={emp.email} />)}
+      {/* {conditionalRender()} */}
     </div>
   );
+
+  function handleSearchChange(value) {
+    let newData = empData.filter(e => e.name.toLocaleLowerCase().indexOf(value) !== -1);
+    if (value === "") {
+      setEmpData(employees);
+    }
+    else {
+      setEmpData(newData);
+    }
+    // setEmpData();
+    // console.log(empData);
+  }
 
   // Parent component handles "onChange" event raised by child component "SortTable"
   // This is how the parent receives props value from child
@@ -55,12 +69,16 @@ export default function App() {
   }
 
   // Filter by "manager". The function returns an array of JSX strings to be rendered
-  function filter() {
-    let filteredArray;
-    // string.search("searchWord") return position of the found word; if not found, it return -1
-    // solution found on w3schools.com: https://www.w3schools.com/jsref/jsref_search.asp
-    filteredArray = employees.filter(e => e.role.toLocaleLowerCase().search("manager") >= 0);
-    return filteredArray.map(emp => <TableRow id={emp.id} key={emp.id} name={emp.name} role={emp.role} department={emp.department} email={emp.email} />);
+  function filter(checked) {
+    if (checked) {
+      setEmpData(empData.filter(e => e.role.toLocaleLowerCase().search("manager") >= 0));
+    }
+    else (setEmpData(employees));
+    // let filteredArray;
+    // // string.search("searchWord") return position of the found word; if not found, it return -1
+    // // solution found on w3schools.com: https://www.w3schools.com/jsref/jsref_search.asp
+    // filteredArray = ;
+    // return filteredArray.map(emp => <TableRow id={emp.id} key={emp.id} name={emp.name} role={emp.role} department={emp.department} email={emp.email} />);
   }
 
   // Sort by value that user selet in the seletion box
@@ -71,13 +89,19 @@ export default function App() {
     // https://stackoverflow.com/questions/1129216/sort-array-of-objects-by-string-property-value
     switch (sortBy) {
       case "Name":
+        setSortBy("Name");
         sortedArray = employees.sort((a, b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));
+        setEmpData(sortedArray);
         break;
       case "ID":
+        setSortBy("ID");
         sortedArray = employees.sort((a, b) => (a.id > b.id) ? 1 : ((b.id > a.id) ? -1 : 0));
+        setEmpData(sortedArray);
         break;
       case "Department":
+        setSortBy("Department");
         sortedArray = employees.sort((a, b) => (a.department > b.department) ? 1 : ((b.department > a.department) ? -1 : 0));
+        setEmpData(sortedArray);
         break;
       default:
     }
