@@ -5,7 +5,7 @@ This app creates a employee directory with React. React framework allows breakin
 
 * Live site: https://paul-kh.github.io/employee-directory-reactJS/
 
-![alt text](./src/image.png)
+![alt text](./src/image1.png)
 
 ## User Story
 
