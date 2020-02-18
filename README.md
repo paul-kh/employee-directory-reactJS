@@ -5,6 +5,8 @@ This app creates a employee directory with React. React framework allows breakin
 
 * Live site: https://paul-kh.github.io/employee-directory-reactJS/
 
+![alt text](./src/image.png)
+
 ## User Story
 
 * As a user, I want to be able to view my entire employee directory at once so that I have quick access to their information.
