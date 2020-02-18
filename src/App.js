@@ -48,24 +48,18 @@ export default function App() {
   // It receives value of the select box and update this value in the state
 
   function handleSortChange(sortBy) {
-    let sortedArray = [];
-    // Solution found on Stack Overflow
+    setSortBy(sortBy);
+    // Sorting Solution found on Stack Overflow
     // https://stackoverflow.com/questions/1129216/sort-array-of-objects-by-string-property-value
     switch (sortBy) {
       case "Name":
-        setSortBy("Name");
-        sortedArray = employees.sort((a, b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));
-        setEmpData(sortedArray);
+        setEmpData(employees.sort((a, b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0)));
         break;
       case "ID":
-        setSortBy("ID");
-        sortedArray = employees.sort((a, b) => (a.id > b.id) ? 1 : ((b.id > a.id) ? -1 : 0));
-        setEmpData(sortedArray);
+        setEmpData(employees.sort((a, b) => (a.id > b.id) ? 1 : ((b.id > a.id) ? -1 : 0)));
         break;
       case "Department":
-        setSortBy("Department");
-        sortedArray = employees.sort((a, b) => (a.department > b.department) ? 1 : ((b.department > a.department) ? -1 : 0));
-        setEmpData(sortedArray);
+        setEmpData(employees.sort((a, b) => (a.department > b.department) ? 1 : ((b.department > a.department) ? -1 : 0)));
         break;
       default:
     }
