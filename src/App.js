@@ -73,18 +73,5 @@ export default function App() {
       setEmpData(empData.filter(e => e.role.toLocaleLowerCase().search("manager") >= 0));
     } else (setEmpData(employees));
   }
-
-  // Filter by "manager". The function returns an array of JSX strings to be rendered
-  function filter(checked) {
-    if (checked) {
-      setEmpData(empData.filter(e => e.role.toLocaleLowerCase().search("manager") >= 0));
-    }
-    else (setEmpData(employees));
-    // let filteredArray;
-    // // string.search("searchWord") return position of the found word; if not found, it return -1
-    // // solution found on w3schools.com: https://www.w3schools.com/jsref/jsref_search.asp
-    // filteredArray = ;
-    // return filteredArray.map(emp => <TableRow id={emp.id} key={emp.id} name={emp.name} role={emp.role} department={emp.department} email={emp.email} />);
-  }
 }
 
