@@ -21,8 +21,8 @@ export default function App() {
     <div >
       <h1 className="App">Employee Directory</h1>
       {/* Handle onChange events raised from the child components "SortTable" & "FilterTable" */}
-      <SortTable onChange={handleSortOnChange} />
-      <FilterTable onChange={handleFilterCheck} />
+      <SortTable sortChange={handleSortChange} />
+      <FilterTable filterChange={handleFilterChange} />
       <TableHeader />
       {conditionalRender()}
     </div>
@@ -31,12 +31,12 @@ export default function App() {
   // Parent component handles "onChange" event raised by child component "SortTable"
   // This is how the parent receives props value from child
   // It receives value of the select box and update this value in the state
-  function handleSortOnChange(value) { setSortBy(value) }
+  function handleSortChange(value) { setSortBy(value) }
 
   // Parent component handles "onChange" event raised by child component "FilterTable"
   // This is how the parent receives props value from child
   // It detects the checkbox status then update the value in the state variable "isFiltered"
-  function handleFilterCheck(checked) { return checked ? setIsFiltered(true) : setIsFiltered(false) }
+  function handleFilterChange(checked) { return checked ? setIsFiltered(true) : setIsFiltered(false) }
 
   // Render components dynamically based on conditions of sorting and filtering
   function conditionalRender() {

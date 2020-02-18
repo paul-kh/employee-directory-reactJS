@@ -10,7 +10,7 @@ export default function FilterTable(props) {
                     <input
                         type="checkbox"
                         value="manager"
-                        onChange={({ target }) => props.onChange(target.checked)}
+                        onChange={({ target }) => props.filterChange(target.checked)}
                     />
                     <label className="m-1"> Show only manager</label>
                 </div>

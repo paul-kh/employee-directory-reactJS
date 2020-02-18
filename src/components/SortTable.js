@@ -11,7 +11,7 @@ export default function SortFilterTable(props) {
             <div className="row">
                 <div className="col-4">
                     {/* raise onChange event to the parent element "App" */}
-                    <select className="form-control " onChange={({ target }) => props.onChange(target.value)}>
+                    <select className="form-control " onChange={({ target }) => props.sortChange(target.value)}>
                         <option> ID </option>
                         <option> Name </option>
                         <option> Department </option>
