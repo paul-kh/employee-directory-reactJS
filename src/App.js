@@ -23,7 +23,7 @@ export default function App() {
       <h1 className="App">Employee Directory</h1>
       {/* Handle onChange events raised from the child components "SortTable" & "FilterTable" */}
       <SortTable sortChange={sort} searchChange={handleSearchChange} />
-      <FilterTable filterChange={filter} />
+      <FilterTable filterChange={handleFilterChange} />
       <TableHeader />
       {empData.map(emp => <TableRow id={emp.id} key={emp.id} name={emp.name} role={emp.role} department={emp.department} email={emp.email} />)}
       {/* {conditionalRender()} */}
@@ -50,7 +50,11 @@ export default function App() {
   // Parent component handles "onChange" event raised by child component "FilterTable"
   // This is how the parent receives props value from child
   // It detects the checkbox status then update the value in the state variable "isFiltered"
-  function handleFilterChange(checked) { return checked ? setIsFiltered(true) : setIsFiltered(false) }
+  function handleFilterChange(checked) {
+    if (checked) {
+      setEmpData(empData.filter(e => e.role.toLocaleLowerCase().search("manager") >= 0));
+    } else (setEmpData(employees));
+  }
 
   // Render components dynamically based on conditions of sorting and filtering
   function conditionalRender() {
@@ -105,7 +109,6 @@ export default function App() {
         break;
       default:
     }
-    return sortedArray.map(emp => <TableRow id={emp.id} key={emp.id} name={emp.name} role={emp.role} department={emp.department} email={emp.email} />);
   }
 }
 
